@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Home() {
   // Flagship Dashboard Simulator States
@@ -8,6 +10,15 @@ function Home() {
   const [ambientColor, setAmbientColor] = useState("#00f2fe"); // default electric cyan
   const [revving, setRevving] = useState(false);
   const [eqHeights, setEqHeights] = useState([15, 15, 15, 15, 15, 15, 15, 15]);
+
+  // Initialize AOS (Animate on Scroll)
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+    });
+  }, []);
 
   // Real-time equalizer visualizer bars fluctuating during sound revs
   useEffect(() => {
@@ -97,7 +108,7 @@ function Home() {
           />
         </div>
 
-        <div className="hero-content animate-fade-in-up">
+        <div className="hero-content" data-aos="fade-up" data-aos-duration="1000">
           <span className="badge">CRAFTED FOR CONNOISSEURS</span>
 
           <h1 className="hero-title">
@@ -121,7 +132,7 @@ function Home() {
       </section>
 
       {/* Numeric Stats Dashboard */}
-      <section className="stats-bar animate-fade-in">
+      <section className="stats-bar" data-aos="fade-up" data-aos-duration="1000">
         <div className="stat-item">
           <div className="stat-num">&lt; 1.85s</div>
           <div className="stat-label">0-100 KM/H SPEED</div>
@@ -142,7 +153,7 @@ function Home() {
 
       {/* Highlights Showcase */}
       <section className="section">
-        <div className="section-header animate-fade-in-up">
+        <div className="section-header" data-aos="fade-up">
           <span className="badge">Ha Pat Prestige Limo</span>
           <h2>Redefining Excellence</h2>
           <p>
@@ -151,7 +162,7 @@ function Home() {
         </div>
 
         <div className="features-grid">
-          <div className="feature-card animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+          <div className="feature-card" data-aos="fade-up" data-aos-delay="100">
             <div className="feature-icon-wrapper">⚡</div>
             <h3>Aero-Acoustics</h3>
             <p>
@@ -159,7 +170,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="feature-card animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <div className="feature-card" data-aos="fade-up" data-aos-delay="200">
             <div className="feature-icon-wrapper">✨</div>
             <h3>Bespoke Cabin</h3>
             <p>
@@ -167,7 +178,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="feature-card animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <div className="feature-card" data-aos="fade-up" data-aos-delay="300">
             <div className="feature-icon-wrapper">🔋</div>
             <h3>Electric Zenith</h3>
             <p>
@@ -179,7 +190,7 @@ function Home() {
 
       {/* The Flagship Segment: Interactive Cockpit Console */}
       <section className="section" style={{ background: "rgba(10, 10, 15, 0.55)", borderTop: "1px solid var(--border-glass)", position: "relative" }}>
-        <div className="about-mission animate-fade-in-up" style={{ maxWidth: "1100px", margin: "0 auto" }}>
+        <div className="about-mission" style={{ maxWidth: "1100px", margin: "0 auto" }} data-aos="fade-up">
           <span className="badge">Interactive Virtual Garage</span>
           <h2>Flagship Apex GT Console</h2>
           <p style={{ marginBottom: "35px", maxWidth: "750px", marginLeft: "auto", marginRight: "auto" }}>
@@ -188,6 +199,8 @@ function Home() {
 
           <div
             className="console-wrapper"
+            data-aos="fade-up"
+            data-aos-delay="100"
             style={{
               "--ambient-color": ambientColor,
               "--ambient-color-glow": `${ambientColor}22`
@@ -359,7 +372,7 @@ function Home() {
 
       {/* Ha Pat Innovation Suite */}
       <section className="section" style={{ borderTop: "1px solid var(--border-glass)" }}>
-        <div className="section-header animate-fade-in-up">
+        <div className="section-header" data-aos="fade-up">
           <span className="badge">CONCEPT ENGINEERING</span>
           <h2>The Ha Pat Innovation Suite</h2>
           <p>
@@ -367,22 +380,22 @@ function Home() {
           </p>
         </div>
 
-        <div className="innovation-grid animate-fade-in-up">
-          <div className="innovation-card">
+        <div className="innovation-grid">
+          <div className="innovation-card" data-aos="fade-up" data-aos-delay="100">
             <div className="innovation-num">01</div>
             <h3>Active Aero Wings</h3>
             <p>
               Autonomous aerodynamic control surfaces that self-adjust 200 times per second, optimizing downforce and maximizing cornering traction.
             </p>
           </div>
-          <div className="innovation-card">
+          <div className="innovation-card" data-aos="fade-up" data-aos-delay="200">
             <div className="innovation-num">02</div>
             <h3>Solid-State Thermal Management</h3>
             <p>
               Advanced closed-circuit liquid nitrogen loops keeping the solid-state battery array at a perfect 22°C, preventing high-discharge wear.
             </p>
           </div>
-          <div className="innovation-card">
+          <div className="innovation-card" data-aos="fade-up" data-aos-delay="300">
             <div className="innovation-num">03</div>
             <h3>Neural Autopilot</h3>
             <p>
@@ -394,14 +407,14 @@ function Home() {
 
       {/* Client Testimony Matrix */}
       <section className="section" style={{ background: "rgba(7, 7, 10, 0.6)", borderTop: "1px solid var(--border-glass)" }}>
-        <div className="section-header animate-fade-in-up">
+        <div className="section-header" data-aos="fade-up">
           <span className="badge">TESTIMONIALS</span>
           <h2>The Vanguard Circles</h2>
           <p>Read opinions and experiences directly from validated owners of the Ha Pat registry.</p>
         </div>
 
-        <div className="testimonials-grid animate-fade-in-up">
-          <div className="testimonial-card">
+        <div className="testimonials-grid">
+          <div className="testimonial-card" data-aos="fade-up" data-aos-delay="100">
             <div className="quote-mark">“</div>
             <p className="quote-text">
               The Ha Pat Stealth EV has transformed my daily commute. The whisper-quiet cabin paired with raw, instantaneous torque is simply unmatched.
@@ -415,7 +428,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="testimonial-card">
+          <div className="testimonial-card" data-aos="fade-up" data-aos-delay="200">
             <div className="quote-mark">“</div>
             <p className="quote-text">
               Comissioning my Fortune Apex GT was a dream. The design studio accommodated every custom paint request. The result is a piece of rolling art.

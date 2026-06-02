@@ -1,5 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ── Initialize AOS Animations ──
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 120
+    });
+  }
+
   // ── Footer Copyright Year ──
   const currentYearEl = document.getElementById('currentYear');
   if (currentYearEl) {
@@ -44,27 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Scroll-Triggered Section Animations ──
-  const scrollElements = document.querySelectorAll('.scroll-reveal');
-
-  const elementInView = (el, dividend = 1) => {
-    const elementTop = el.getBoundingClientRect().top;
-    return (
-      elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-    );
-  };
-
-  const displayScrollElement = (element) => {
-    element.classList.add('reveal-active');
-  };
-
-  const handleScrollAnimation = () => {
-    scrollElements.forEach((el) => {
-      if (elementInView(el, 1.15)) {
-        displayScrollElement(el);
-      }
-    });
-  };
+  // Scroll reveal animations are now handled by the AOS library.
 
   // ── Header Scroll State ──
   const header = document.querySelector('.header');
@@ -144,13 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Initialize scroll animation and attach events
-  handleScrollAnimation();
+  // Initialize scroll states and attach events
   handleHeaderScroll();
   handleNavHighlight();
 
   window.addEventListener('scroll', () => {
-    handleScrollAnimation();
     handleHeaderScroll();
     handleNavHighlight();
   });
